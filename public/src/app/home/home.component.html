@@ -7,18 +7,17 @@
   </head>
   <body>
     <div id="container">
-      <h1 id="header">Home Affordability Calculator</h1>
-      <div id="card" class="card text-center">
-        <div class="card-body">
-          <h5 class="card-title">Expenses</h5>
-          <p class="card-text">
-            You will now see a series of questions regarding your total expenses.
-          </p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
-        </div>
-      </div>
+    <!-- Default form contact -->
+<form *ngFor="let card of cards" ngForm #checkForm="ngForm" (submit)="getClicked(checkForm)" id="forms" class="text-center border border-light p-5">
+
+  <label><p class="h4 mb-4">{{card.description}}</p></label>
+
+  <!-- Response -->
+  <label><input type="number" name="numbersInForm[card.value]" [(ngModel)]="numbersInForm[card.value]" id="defaultContactFormName" class="form-control mb-4" placeholder="i.e. $100 or 0 if no"></label>
+
+  <!-- Send button -->
+  <button class="btn btn-info btn-block" type="submit">Next</button>
+</form>
     </div>
   </body>
 </html>
