@@ -47,21 +47,22 @@
       </div>
       <!-- Grid row -->
     </div>
-    
-      <form *ngFor="let card of cards;let i=index" #checkForm="ngForm" (submit)="getClicked(checkForm)" id="forms"
+    <div class="formContainer" *ngFor="let card of cards;let i=index" id="{{show}}">
+      <form #checkForm="ngForm" (submit)="getClicked(checkForm)" id="forms"
       class="text-center border border-light p-5">
 
       <div class="ribbon ribbon-top-left"><span>{{i+1}}/15</span></div>
 
-      <label><p id="description" class="h4 mb-4">{{card.description}}</p></label>
+      <label><p class="h4 mb-4">{{card.description}}</p></label>
       
       <!-- Response -->
       <label><input type="number" name="numbersInForm[card.description]" [(ngModel)]="numbersInForm[card.description]"
           id="defaultContactFormName" class="form-control mb-4" placeholder="i.e. $100 or 0 if no" /></label>
 
       <!-- Send button -->
-      <button id="button" (click)="selectedDivIndex=i" class="btn btn-info btn-block" type="submit">Next</button>
+      <button id="button2" (click)="toggle()" class="btn btn-info btn-block" type="submit">Next</button>
     </form>
+  </div>
   </div>
 </body>
 
