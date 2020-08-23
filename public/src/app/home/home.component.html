@@ -1,80 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-  </head>
-  <body>
-    <div id="container">
-      <!-- News jumbotron -->
-      <div id="jumbo" class="jumbotron text-center hoverable p-4">
-        <!-- Grid row -->
-        <div class="row">
-          <!-- Grid column -->
-          <div class="col-md-4 offset-md-1 mx-3 my-3">
-            <!-- Featured image -->
-            <div class="view overlay">
-              <img
-                src="../../assets/img/home.jpg"
-                class="img-fluid"
-                alt="Sample image for first version of blog listing"
-              />
-              <a>
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+</head>
+
+<body>
+  <div id="container">
+    <!-- News jumbotron -->
+    <div id="jumbo" class="jumbotron text-center hoverable p-4">
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-4 offset-md-1 mx-3 my-3">
+          <!-- Featured image -->
+          <div class="view overlay">
+            <img src="../../assets/img/home.jpg" class="img-fluid"
+              alt="Sample image for first version of blog listing" />
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
           </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-7 text-md-left ml-3 mt-3">
-            <h4 class="h4 mb-4">Welcome to the Home Mortgage Estimator!</h4>
-
-            <p class="font-weight-normal">
-              The purpose of this website is to provide you with a reasonable
-              estiamte on how expensive of a house you can afford to buy
-              currently. Home buying can be a daunting task but we are here to
-              help make things easier. You will be asked a series of questions
-              regarding your monthly expenses and your monthly income. Don't
-              worry, no data is stored or viewed by anyone but you.
-            </p>
-
-            <button class="button btn-success" id="fadeButton">
-              Let's get started!
-            </button>
-          </div>
-          <!-- Grid column -->
         </div>
-        <!-- Grid row -->
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-7 text-md-left ml-3 mt-3">
+          <h4 class="h4 mb-4">Welcome to the Home Mortgage Estimator!</h4>
+
+          <p class="font-weight-normal">
+            The purpose of this website is to provide you with a reasonable
+            estiamte on how expensive of a house you can afford to buy
+            currently. Home buying can be a daunting task but we are here to
+            help make things easier. You will be asked a series of questions
+            regarding your monthly expenses and your monthly income. Don't
+            worry, no data is stored or viewed by anyone but you.
+          </p>
+
+          <button class="button btn-success" id="fadeButton">
+            Let's get started!
+          </button>
+        </div>
+        <!-- Grid column -->
       </div>
-      <!-- News jumbotron -->
-      <form
-        *ngFor="let card of cards"
-        ngForm
-        #checkForm="ngForm"
-        (submit)="getClicked(checkForm)"
-        id="forms"
-        class="text-center border border-light p-5"
-      >
-        <label
-          ><p class="h4 mb-4">{{ card.description }}</p></label
-        >
-
-        <!-- Response -->
-        <label
-          ><input
-            type="number"
-            name="numbersInForm[card.value]"
-            [(ngModel)]="numbersInForm[card.value]"
-            id="defaultContactFormName"
-            class="form-control mb-4"
-            placeholder="i.e. $100 or 0 if no"
-        /></label>
-
-        <!-- Send button -->
-        <button class="btn btn-info btn-block" type="submit">Next</button>
-      </form>
+      <!-- Grid row -->
     </div>
-  </body>
+    
+      <form *ngFor="let card of cards;let i=index" #checkForm="ngForm" (submit)="getClicked(checkForm)" id="forms"
+      class="text-center border border-light p-5">
+
+      <div class="ribbon ribbon-top-left"><span>{{i+1}}/15</span></div>
+
+      <label><p id="description" class="h4 mb-4">{{card.description}}</p></label>
+      
+      <!-- Response -->
+      <label><input type="number" name="numbersInForm[card.description]" [(ngModel)]="numbersInForm[card.description]"
+          id="defaultContactFormName" class="form-control mb-4" placeholder="i.e. $100 or 0 if no" /></label>
+
+      <!-- Send button -->
+      <button id="button" (click)="selectedDivIndex=i" class="btn btn-info btn-block" type="submit">Next</button>
+    </form>
+  </div>
+</body>
+
 </html>
