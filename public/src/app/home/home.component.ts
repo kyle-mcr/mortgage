@@ -60,9 +60,6 @@ export class HomeComponent implements OnInit {
         "Any other monthly expenses that aren't accounted for please add them here.",
     },
     {
-      description: "What is your monthyl income per month after taxes?",
-    },
-    {
       description: "What is your total household income after taxes?",
     },
     {
@@ -83,6 +80,9 @@ export class HomeComponent implements OnInit {
   newArry: any = [];
   mortgageRateFound: any;
   calculate: any;
+  expenses: any;
+  downPayment: any;
+  income: any;
   newString: string = "";
   constructor() {}
 
@@ -113,13 +113,24 @@ export class HomeComponent implements OnInit {
     );
     let allNumbs = Object.values(newObj);
     console.log(allNumbs);
-    console.log(allNumbs.length)
-    this.calculate = allNumbs[0];
-    if(allNumbs.length=3){
-    for (var j = 1; j < allNumbs.length; j++) {
-      this.calculate += (allNumbs[j]);
+    let downPayment = allNumbs[allNumbs.length-1];
+    let calculate = 0;
+    let expenses = allNumbs[0];
+    let income = allNumbs[14];
+    if (allNumbs.length = 18) {
+      for (var j = 1; j <= 16; j++) {
+        if (j < 14) {
+        expenses += allNumbs[j];
+        }
+        if (j >= 15) {
+          income += allNumbs[j];
+        }
+        calculate = income - expenses;
+      }
     }
-  }
-    console.log(this.calculate);
+    console.log(expenses)
+    console.log(income)
+    console.log(calculate)
+    console.log(downPayment)
   }
 }
