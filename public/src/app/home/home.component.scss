@@ -1,38 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
-html, body {
-    min-height:100%;
-    display: flex;
-} 
-.container{
-    min-height:100%;
+body {
+    padding-top: 1.3%;
+    background-size: cover;
+    min-height: 1200px;
+    min-width: 100%;
 }
-#header {
-  text-align: center;
+#container {
+  height: 100%;
+  width: 100%;
 }
-#description{
-    margin-top: 26px;
-}
-#forms {
-  width: 30%;
-  margin-left: 90%;
-  margin-top: 5%;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  display: none;
-  position: relative;
-}
-#button2 {
-    background: rgb(251,110,198);
-    background: linear-gradient(90deg, rgba(251,110,198,1) 2%, rgba(124,114,244,1) 100%);
-    padding: 10px;
-}
-.border {
-  border-radius: 10px;
-}
+
 #jumbo {
   width: 70%;
   margin-left: 15%;
@@ -63,63 +39,134 @@ body {
   min-height: 1200px;
   min-width: 100%;
 }
-#forms {
+
+@import url("https://fonts.googleapis.com/css?family=Roboto|Sriracha&display=swap");
+$background: #fffffb;
+$accent: #ff6b6c;
+$otherAccent: #ffc145;
+$darkBackground: #5b5f97;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Roboto", arial, sans-serif;
+  color: #222;
+}
+#login-container {
+  height: 40%;
+  width: 50%;
+  padding: 3%;
+  margin-left:25%;
+  margin-top:10%;
+  display: none;
+  border-radius: 5px;
+  background: $background;
   position: relative;
-  max-width: 600px;
-  width: 90%;
-  height: 320px;
-  box-shadow: 0 0 15px rgba(0,0,0,.1);
-}
-/* common */
-.ribbon {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  position: absolute;
-}
-.ribbon::before,
-.ribbon::after {
-  position: absolute;
-  z-index: -1;
-  content: '';
-  display: block;
-  border: 5px solid #FF4150;
-}
-.ribbon span {
-  position: absolute;
-  display: block;
-  width: 225px;
-  padding: 15px 0;
-  background-color: #FF4150;
-  box-shadow: 0 5px 10px rgba(0,0,0,.1);
-  color: #fff;
-  font: 700 18px/1 'Lato', sans-serif;
-  text-shadow: 0 1px 1px rgba(0,0,0,.2);
-  text-transform: uppercase;
-  text-align: center;
-}
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 
-/* top left*/
-.ribbon-top-left {
-  top: -10px;
-  left: -10px;
-}
-.ribbon-top-left::before,
-.ribbon-top-left::after {
-  border-top-color: transparent;
-  border-left-color: transparent;
-}
-.ribbon-top-left::before {
-  top: 0;
-  right: 0;
-}
-.ribbon-top-left::after {
-  bottom: 0;
-  left: 0;
-}
-.ribbon-top-left span {
-  right: -25px;
-  top: 30px;
-  transform: rotate(-45deg);
-}
+  .count {
+    height: 90px;
+    width: 90px;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    background-color:#87B0F9;
+    top: -35px;
+    left: -35px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+  h3{
+    font-family: "Sriracha", arial, sans-serif;
+    text-align: center;
+    color: white;
+    margin-top: 33%;
+  }
+  h1 {
+    font-family: "Sriracha", arial, sans-serif;
+    text-align: center;
+    width:100%;
+    color: $otherAccent;
+  }
+  #input {
+    width:60%;
+    height:100%;
+  }
+  #inputField{
+      margin-left:23%;
+      width:70%;
+      height:10%;
+      margin-top: 8%;
+      font-size: 22px;
+      font-family: "Sriracha", arial, sans-serif;
+  }
+  #dollar{
+      color:rgb(0, 194, 0);
+      font-size:2.2vh;
+      margin-right:4px;
+      padding:0px;
+      line-height: 100%;
+  }
 
+  button {
+    width: 80%;
+    height: 80px;
+    font-size: 2rem;
+    margin: 30px 10% 0 10%;
+    color: $background;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background: linear-gradient(
+      45deg,
+      $accent,
+      $otherAccent,
+      $otherAccent,
+      $accent
+    );
+    background-size: 300% 300%;
+    outline: none;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      transform: translateY(2px);
+      -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+      animation: gradientBG 1.5s ease-in-out forwards;
+      cursor: pointer;
+    }
+    &:active {
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+      transform: translateY(4px);
+    }
+  }
+
+@-webkit-keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+  // 100% {
+  //   background-position: 0% 50%;
+  // }
+}
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+  // 100% {
+  //   background-position: 0% 50%;
+  // }
+}
+}

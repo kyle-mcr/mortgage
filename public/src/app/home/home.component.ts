@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     },
     {
       description:
-        "How much do you estimate you spend per month for car maintenance?",
+        "How much do you estimate you spend on average, for car maintenance/repair per month?",
     },
     {
       description:
@@ -37,27 +37,27 @@ export class HomeComponent implements OnInit {
         "How much do you estimate you spend on groceries and essential supplies per month",
     },
     {
-      description: "Do you pay for a fitness membership?",
+      description: "Do you pay for a monthly fitness membership?",
     },
     {
-      description: "Do you pay for any streaming services?",
+      description: "Do you pay for any monthly streaming services?",
     },
     {
-      description: "Do you pay a monthly phone bill?",
+      description: "Do you pay for a monthly phone bill?",
     },
     {
       description:
         "How much do you estimate you spend on dining out per month?",
     },
     {
-      description: "Do you pay for child care or child support?",
-    },
-    {
       description: "Estimated monthly cost for reacreation and entertainment?",
     },
     {
+      description: "Do you pay for child care or child support?",
+    },
+    {
       description:
-        "Any other monthly expenses that aren't accounted for please add them here.",
+        "Any other monthly expenses that weren't accounted for please add them here(other than rent, electricity, and internet/cable).",
     },
     {
       description: "What is your total household income after taxes?",
