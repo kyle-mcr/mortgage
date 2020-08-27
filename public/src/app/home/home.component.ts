@@ -9,6 +9,7 @@ declare var jQuery: any;
 export class HomeComponent implements OnInit {
   public show: boolean = false;
   public formName: any = "Show";
+  public count: number = 0;
 
   cards = [
     {
@@ -60,7 +61,7 @@ export class HomeComponent implements OnInit {
         "Any other monthly expenses that weren't accounted for please add them here(other than rent, electricity, and internet/cable).",
     },
     {
-      description: "What is your total household income after taxes?",
+      description: "What is your total household monthly income after taxes?",
     },
     {
       description:
@@ -81,18 +82,18 @@ export class HomeComponent implements OnInit {
   mortgageRateFound: any;
   calculate: any;
   expenses: any;
+  leftSide: number;
+  rightSide: number;
+  monthlyPayment: number;
+  formula: number;
+  brackets: number;
+  house: any;
+  currentValue: any;
   downPayment: any;
   income: any;
+  mortgage: any;
   newString: string = "";
   constructor() {}
-
-  toggle() {
-    let count = this.numbersInForm.length;
-    this.show = !this.show;
-    // CHANGE THE NAME OF THE BUTTON.
-    if (this.show) this.formName = "count";
-    else this.formName = "count+1";
-  }
 
   ngOnInit() {
     (function ($) {
@@ -113,24 +114,40 @@ export class HomeComponent implements OnInit {
     );
     let allNumbs = Object.values(newObj);
     console.log(allNumbs);
-    let downPayment = allNumbs[allNumbs.length-1];
-    let calculate = 0;
-    let expenses = allNumbs[0];
-    let income = allNumbs[14];
-    if (allNumbs.length = 18) {
+    this.downPayment = allNumbs[allNumbs.length - 1];
+    this.calculate = 0;
+    this.house = 0;
+    this.expenses = allNumbs[0];
+    this.income = allNumbs[14];
+    if ((allNumbs.length = 18)) {
       for (var j = 1; j <= 16; j++) {
         if (j < 14) {
-        expenses += allNumbs[j];
+          this.expenses += allNumbs[j];
         }
         if (j >= 15) {
-          income += allNumbs[j];
+          this.income += allNumbs[j];
         }
-        calculate = income - expenses;
+        this.calculate = this.income - this.expenses;
       }
     }
-    console.log(expenses)
-    console.log(income)
-    console.log(calculate)
-    console.log(downPayment)
+    console.log("expenses",this.expenses);
+    console.log("income", this.income);
+    console.log("income-expenses", this.calculate);
+    console.log("downpayment", this.downPayment);
+    this.calculateHouse()
+  }
+
+  calculateHouse() {
+    console.log("made it to calculate house");
+    this.mortgageRateFound = 0.0025;
+    this.leftSide = Math.pow(1 + this.mortgageRateFound, 360);
+    this.rightSide = Math.pow(1 + this.mortgageRateFound, 360) - 1;
+    console.log("leftside", this.leftSide)
+    console.log("rightside", this.rightSide)
+    this.brackets =
+      (this.mortgageRateFound * this.leftSide) / (this.rightSide);
+    this.formula = this.calculate / this.brackets + this.downPayment;
+    console.log("brackets", this.brackets);
+    console.log("formula", this.formula);
   }
 }

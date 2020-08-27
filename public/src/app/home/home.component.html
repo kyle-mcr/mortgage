@@ -30,11 +30,10 @@
         <div class="col-md-7 text-md-left ml-3 mt-3">
           <h4 class="h4 mb-4">Welcome to the Home Mortgage Estimator!</h4>
 
-          <p class="font-weight-normal">
-            The purpose of this website is to provide you with how expensive of a house you can afford to buy. Home buying can be a daunting task but we are here to
-            help make things easier. You will be asked a series of questions
+          <p id="par" class="font-weight-normal">
+            Here at Home Mortgage Estimator we make the proccess of finding the perfect home easier. Purchasing a home can be a daunting task. You will be asked a series of questions
             regarding your monthly expenses and your monthly income. Don't
-            worry, no data is stored or viewed by anyone but you. If you are planning on butin a home with a spouse, then repsond to each question with your and your spouses answer added together.
+            worry, no data is stored or viewed by anyone but you. If you are planning on buying a home with a spouse, then repsond to each question with your and your spouses response added together.
           </p>
 
           <button class="button btn-success" id="fadeButton">
@@ -46,12 +45,16 @@
       <!-- Grid row -->
     </div>
       <form *ngFor="let card of cards;let i=index" ngForm #checkForm="ngForm" (submit)="getClicked(checkForm)" id="login-container">
-      <div class="count"><h3>{{i+1}}/18</h3></div>
-        <label><h1>{{card.description}}</h1></label>
+      <div class="count" id="_count"><h3>{{i+1}}/18</h3></div>
+        <label><h1 id="description">{{card.description}}</h1></label>
         <label id="inputField"><i id="dollar" class="fas fa-dollar-sign"></i><i id="dollar" class="fas fa-dollar-sign"></i><i id="dollar" class="fas fa-dollar-sign"></i><input type="number" name="numbersInForm[card.description]" [(ngModel)]="numbersInForm[card.description]"
           id="input" class="form-input" placeholder="Ex: $100 or $0 if none"/></label>
-      <button (click)="toggle()" type="submit">Next</button>
+      <button type="submit">Next</button>
     </form>
+    <div *ngIf="formula" class="results pb-4">
+
+      <h1>{{formula}}</h1>
+    </div>
   </div>
 </body>
 
