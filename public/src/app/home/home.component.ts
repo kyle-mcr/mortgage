@@ -7,9 +7,6 @@ declare var jQuery: any;
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  public show: boolean = false;
-  public formName: any = "Show";
-  public count: number = 0;
 
   cards = [
     {
@@ -76,14 +73,18 @@ export class HomeComponent implements OnInit {
     },
   ];
   numbersInForm: any = {};
+  hideme = [];
   allNumbs: any = [];
   newObj = {};
   newArry: any = [];
   mortgageRateFound: any;
   calculate: any;
+  finalAnswer: number;
+  count: number = 0;
   expenses: any;
   leftSide: number;
   rightSide: number;
+  isNaN: Function = Number.isNaN;
   monthlyPayment: number;
   formula: number;
   brackets: number;
@@ -93,6 +94,9 @@ export class HomeComponent implements OnInit {
   income: any;
   mortgage: any;
   newString: string = "";
+  visibleIndex:number = 0;
+
+
   constructor() {}
 
   ngOnInit() {
@@ -137,6 +141,20 @@ export class HomeComponent implements OnInit {
     this.calculateHouse()
   }
 
+  showSubItem(i) {  
+    console.log("made it to subitem");
+    if (this.visibleIndex === i) {
+      this.visibleIndex += 1;
+    } else {
+      this.visibleIndex = i;
+    }
+  }
+
+  counting(){
+    this.count ++;
+    console.log("count is", this.count)
+  }
+
   calculateHouse() {
     console.log("made it to calculate house");
     this.mortgageRateFound = 0.0025;
@@ -144,10 +162,11 @@ export class HomeComponent implements OnInit {
     this.rightSide = Math.pow(1 + this.mortgageRateFound, 360) - 1;
     console.log("leftside", this.leftSide)
     console.log("rightside", this.rightSide)
-    this.brackets =
-      (this.mortgageRateFound * this.leftSide) / (this.rightSide);
+    this.brackets = (this.mortgageRateFound * this.leftSide) / (this.rightSide);
     this.formula = this.calculate / this.brackets + this.downPayment;
+    this.finalAnswer = Math.trunc(this.formula)
     console.log("brackets", this.brackets);
     console.log("formula", this.formula);
+    console.log("finalanswer", this.finalAnswer);
   }
 }
