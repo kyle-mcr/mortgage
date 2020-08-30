@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     },
     {
       description:
-        "How much do you estimate you spend on groceries and essential supplies per month",
+        "How much do you estimate you spend on groceries and essential supplies per month?",
     },
     {
       description: "Do you pay for a monthly fitness membership?",
@@ -80,6 +80,7 @@ export class HomeComponent implements OnInit {
   mortgageRateFound: any;
   calculate: any;
   finalAnswer: number;
+  commas: any;
   count: number = 0;
   expenses: any;
   leftSide: number;
@@ -141,32 +142,24 @@ export class HomeComponent implements OnInit {
     this.calculateHouse()
   }
 
-  showSubItem(i) {  
-    console.log("made it to subitem");
-    if (this.visibleIndex === i) {
-      this.visibleIndex += 1;
-    } else {
-      this.visibleIndex = i;
-    }
-  }
-
   counting(){
     this.count ++;
     console.log("count is", this.count)
   }
+  back(){
+    if(this.count>=0){
+    this.count--;
+    }
+  }
 
   calculateHouse() {
-    console.log("made it to calculate house");
     this.mortgageRateFound = 0.0025;
     this.leftSide = Math.pow(1 + this.mortgageRateFound, 360);
     this.rightSide = Math.pow(1 + this.mortgageRateFound, 360) - 1;
-    console.log("leftside", this.leftSide)
-    console.log("rightside", this.rightSide)
     this.brackets = (this.mortgageRateFound * this.leftSide) / (this.rightSide);
     this.formula = this.calculate / this.brackets + this.downPayment;
     this.finalAnswer = Math.trunc(this.formula)
-    console.log("brackets", this.brackets);
-    console.log("formula", this.formula);
-    console.log("finalanswer", this.finalAnswer);
+    this.commas = this.finalAnswer.toLocaleString()
+    console.log("yoou can afford", this.commas)
   }
 }
