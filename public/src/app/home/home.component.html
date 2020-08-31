@@ -72,7 +72,7 @@
         <div class="card-header">Your results are in!</div>
         <div class="card-body">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Monthly Income(${{income}}) - Monthly Expenses(${{expenses}}) = ${{calculate}} <i class="fas fa-hand-point-left"></i>&ensp;This is your Net Income.</li>
+            <li class="list-group-item">Monthly Income(${{income}}) - Monthly Expenses(${{expenses}}) = ${{calculate}} <i class="fas fa-hand-point-left"></i>&ensp;This is your *Net Income.</li>
             <li class="list-group-item">Your maximum downpayment: ${{downPayment}}  &nbsp;&nbsp;&nbsp;&nbsp; Interest rate: 3.3%</li>
             <li class="list-group-item">Below are various home prices you could afford from highest to lowest.</li>
           </ul>
@@ -82,23 +82,30 @@
         <div class="progress" style="width:100%"></div>
         <div class="card-body">
           <h5 class="card-title">${{ commas }}</h5>
-          <p class="card-text">This is what you could afford if you were to spend 100% of your Net Income on a monthly mortgage payment.</p>
+          <p class="card-text">This is what you could afford if you were to spend 100% of your *Net Income on a monthly mortgage payment. 
+            This would leave you with <span style="color:red; font-weight: bold; font-size:1.3vw;">$0</span> leftover.
+          </p>
         </div>
       </div>
 
       <div class="card border-light mb-3" id="endCards">
         <div class="progress" style="width:50%"></div>
         <div class="card-body">
-          <h5 class="card-title">${{ commas }}</h5>
-          <p class="card-text">This is what you could afford if you were to spend 100% of your Net Income on a monthly mortgage payment.</p>
+          <h5 class="card-title">${{ fiftyCommas }}</h5>
+          <p class="card-text">This is what you could afford if you were to spend 50% of your *Net Income on a monthly mortgage payment. 
+            This would leave you with <span style="color:#d9ff00; font-weight: bold; font-size:1.3vw;">${{ fiftyLeft }}</span> leftover.
+          </p>
         </div>
       </div>
 
       <div class="card border-light mb-3" id="endCards">
         <div class="progress" style="width:30%"></div>
         <div class="card-body">
-          <h5 class="card-title">${{ commas }}</h5>
-          <p class="card-text">This is what you could afford if you were to spend 100% of your Net Income on a monthly mortgage payment.</p>
+          <h5 class="card-title">${{ thirtyCommas }}</h5>
+          <p class="card-text">This is what you could afford if you were to spend 30% of your *Net Income on a monthly mortgage payment. 
+            This would leave you with <span style="color:green; font-weight: bold; font-size:1.3vw;">${{ thirtyLeft }}</span>  leftover.
+             
+          </p>
         </div>
       </div>
 

@@ -223,7 +223,28 @@ $darkBackground: #5b5f97;
 #cardContainer{
   width:50%;
   margin-left:25%;
-  margin-top: 5%;
+  margin-top: 2%;
+}
+
+.card-title{ 
+color: #000000;
+font-size: 1.5vw;
+line-height: 1.5vw;
+text-shadow: 0 0 3vw #00c53b;
+}
+.card-title {
+animation: card-title 1.2s ease-in-out;
+-moz-animation: card-title 1.2s ease-in-out;
+-webkit-animation: card-title 1.2s ease-in-out;
+}
+@keyframes card-title {
+0%,
+100% {
+  text-shadow: 0 0 1vw #00c53b, 0 0 1vw #00c53b;
+}
+50% {
+  text-shadow: 0 0 .5vw #0f800b, 0 0 1.5vw #2cbb00;
+}
 }
 
 #endCards{
@@ -238,6 +259,10 @@ $darkBackground: #5b5f97;
   position:absolute;
   top:0;
 }
+.card-text{
+  font-size: 1.2vw;
+}
+
 
 .progress:before {
   animation:slideIn 2s ease-out;

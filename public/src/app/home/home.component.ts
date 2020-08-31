@@ -81,6 +81,12 @@ export class HomeComponent implements OnInit {
   calculate: any;
   finalAnswer: number;
   commas: any;
+  thirtyCommas: any;
+  fiftyCommas: any;
+  thirtyLeftover: number;
+  FiftyLeftover: number;
+  thirtyLeft: any;
+  fiftyLeft: any;
   count: number = 0;
   expenses: any;
   leftSide: number;
@@ -89,6 +95,8 @@ export class HomeComponent implements OnInit {
   monthlyPayment: number;
   formula: number;
   brackets: number;
+  thirty: number;
+  fifty: number;
   house: any;
   currentValue: any;
   downPayment: any;
@@ -158,6 +166,20 @@ export class HomeComponent implements OnInit {
     this.rightSide = Math.pow(1 + this.mortgageRateFound, 360) - 1;
     this.brackets = (this.mortgageRateFound * this.leftSide) / (this.rightSide);
     this.formula = this.calculate / this.brackets + this.downPayment;
+    this.fifty = Math.trunc((this.calculate / 2) / this.brackets + this.downPayment);
+    this.fiftyCommas = this.fifty.toLocaleString();
+    this.thirty = Math.trunc((this.calculate * .3) / this.brackets + this.downPayment);
+    this.thirtyCommas = this.thirty.toLocaleString();
+    this.thirtyLeftover = Math.trunc(this.calculate - (this.calculate * .3));
+    this.thirtyLeft = this.thirtyLeftover.toLocaleString();
+    this.FiftyLeftover = Math.trunc(this.calculate - (this.calculate / 2));
+    this.fiftyLeft = this.FiftyLeftover.toLocaleString();
+    console.log("100%", this .formula)
+    console.log("50%", this .fifty)
+    console.log("30%", this .thirty)
+    console.log("30 left", this.thirtyLeft);
+    console.log("30 left", this.fiftyLeft);
+
     this.finalAnswer = Math.trunc(this.formula);
     this.commas = this.finalAnswer.toLocaleString();
     console.log("yoou can afford", this.commas);
