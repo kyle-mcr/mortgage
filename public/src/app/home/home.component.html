@@ -66,12 +66,54 @@
             Next
           </button>
         </form>
-    <div *ngIf="count==18 && finalAnswer>0" id="finalA" class="results pb-4">
-      <h1 id="answer">You can afford a ${{ commas }} house!</h1>
+    <div id="cardContainer" *ngIf="count==18 && finalAnswer>0">
+
+      <div class="card border-light mb-3" id="endCards">
+        <div class="card-header">Your results are in!</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Monthly Income(${{income}}) - Monthly Expenses(${{expenses}}) = ${{calculate}} <i class="fas fa-hand-point-left"></i>&ensp;This is your Net Income.</li>
+            <li class="list-group-item">Your maximum downpayment: ${{downPayment}}  &nbsp;&nbsp;&nbsp;&nbsp; Interest rate: 3.3%</li>
+            <li class="list-group-item">Below are various home prices you could afford from highest to lowest.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card border-light mb-3" id="endCards">
+        <div class="progress" style="width:100%"></div>
+        <div class="card-body">
+          <h5 class="card-title">${{ commas }}</h5>
+          <p class="card-text">This is what you could afford if you were to spend 100% of your Net Income on a monthly mortgage payment.</p>
+        </div>
+      </div>
+
+      <div class="card border-light mb-3" id="endCards">
+        <div class="progress" style="width:50%"></div>
+        <div class="card-body">
+          <h5 class="card-title">${{ commas }}</h5>
+          <p class="card-text">This is what you could afford if you were to spend 100% of your Net Income on a monthly mortgage payment.</p>
+        </div>
+      </div>
+
+      <div class="card border-light mb-3" id="endCards">
+        <div class="progress" style="width:30%"></div>
+        <div class="card-body">
+          <h5 class="card-title">${{ commas }}</h5>
+          <p class="card-text">This is what you could afford if you were to spend 100% of your Net Income on a monthly mortgage payment.</p>
+        </div>
+      </div>
+
+
+
+      
+      
     </div>
-    <div *ngIf="count==18 && finalAnswer<0" id="finalA" class="results pb-4">
-      <h1 id="answer">You cannot afford a house YET, keep saving!</h1>
-    </div>
+    <div *ngIf="count==18 && finalAnswer<0" class="card border-light mb-3" style="max-width: 18rem;">
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <h5 class="card-title">Light card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      </div>
   </div>
 </body>
 

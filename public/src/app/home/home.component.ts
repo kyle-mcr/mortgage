@@ -158,8 +158,12 @@ export class HomeComponent implements OnInit {
     this.rightSide = Math.pow(1 + this.mortgageRateFound, 360) - 1;
     this.brackets = (this.mortgageRateFound * this.leftSide) / (this.rightSide);
     this.formula = this.calculate / this.brackets + this.downPayment;
-    this.finalAnswer = Math.trunc(this.formula)
-    this.commas = this.finalAnswer.toLocaleString()
-    console.log("yoou can afford", this.commas)
+    this.finalAnswer = Math.trunc(this.formula);
+    this.commas = this.finalAnswer.toLocaleString();
+    console.log("yoou can afford", this.commas);
+    this.expenses = this.expenses.toLocaleString();
+    this.income = this.income.toLocaleString();
+    this.calculate = this.calculate.toLocaleString();
+    this.downPayment =this.downPayment.toLocaleString();
   }
 }
