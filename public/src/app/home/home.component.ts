@@ -94,6 +94,8 @@ export class HomeComponent implements OnInit {
   isNaN: Function = Number.isNaN;
   monthlyPayment: number;
   formula: number;
+  percentage: number;
+  finalFormula: number;
   brackets: number;
   thirty: number;
   fifty: number;
@@ -165,7 +167,15 @@ export class HomeComponent implements OnInit {
     this.leftSide = Math.pow(1 + this.mortgageRateFound, 360);
     this.rightSide = Math.pow(1 + this.mortgageRateFound, 360) - 1;
     this.brackets = (this.mortgageRateFound * this.leftSide) / (this.rightSide);
-    this.formula = this.calculate / this.brackets + this.downPayment;
+    console.log("brackets", this.brackets);
+    this.formula = (this.downPayment * this.brackets) + this.calculate;
+    console.log("formula", this.formula);
+    this.finalFormula = (this.formula / this.brackets);
+    this.percentage = (this.downPayment / this.finalFormula) * 100;
+    console.log("percentage", this.percentage)
+
+
+
     this.fifty = Math.trunc((this.calculate / 2) / this.brackets + this.downPayment);
     this.fiftyCommas = this.fifty.toLocaleString();
     this.thirty = Math.trunc((this.calculate * .3) / this.brackets + this.downPayment);
@@ -180,7 +190,7 @@ export class HomeComponent implements OnInit {
     console.log("30 left", this.thirtyLeft);
     console.log("30 left", this.fiftyLeft);
 
-    this.finalAnswer = Math.trunc(this.formula);
+    this.finalAnswer = Math.trunc(this.finalFormula);
     this.commas = this.finalAnswer.toLocaleString();
     console.log("yoou can afford", this.commas);
     this.expenses = this.expenses.toLocaleString();
