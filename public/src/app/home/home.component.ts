@@ -104,6 +104,10 @@ export class HomeComponent implements OnInit {
   downPayment: any;
   income: any;
   propTax: number;
+  propTax50: number;
+  propTax50m: number;
+  propTax30: number;
+  propTax30m: number;
   mortgage: any;
   newString: string = "";
   visibleIndex:number = 0;
@@ -182,18 +186,28 @@ export class HomeComponent implements OnInit {
     this.percentage = (this.downPayment / this.finalFormula) * 100;
     console.log("percentage", this.percentage)
     this.fifty = Math.trunc((this.calculate / 2) / this.brackets + this.downPayment);
+    this.propTax50 = (this.fifty/30/12) * .3;
+    this.propTax50m = this.propTax50;
+    this.propTax50 = (this.propTax50 * 30 * 12);
+    this.fifty = (this.fifty - this.propTax50);
     this.fiftyCommas = this.fifty.toLocaleString();
+
     this.thirty = Math.trunc((this.calculate * .3) / this.brackets + this.downPayment);
+    this.propTax30 = (this.thirty/30/12) * .3;
+    this.propTax30m = this.propTax30;
+    this.propTax30 = (this.propTax30 * 30 * 12);
+    this.thirty = (this.thirty - this.propTax30);
     this.thirtyCommas = this.thirty.toLocaleString();
-    this.thirtyLeftover = Math.trunc(this.calculate - (this.calculate * .3));
+
+    this.thirtyLeftover = Math.trunc(this.calculate - (this.calculate * .3) - this.propTax30m);
     this.thirtyLeft = this.thirtyLeftover.toLocaleString();
-    this.FiftyLeftover = Math.trunc(this.calculate - (this.calculate / 2));
+    this.FiftyLeftover = Math.trunc(this.calculate - (this.calculate / 2) - this.propTax50m);
     this.fiftyLeft = this.FiftyLeftover.toLocaleString();
     console.log("100%", this .formula)
     console.log("50%", this .fifty)
     console.log("30%", this .thirty)
     console.log("30 left", this.thirtyLeft);
-    console.log("30 left", this.fiftyLeft);
+    console.log("50 left", this.fiftyLeft);
 
 
     this.finalAnswer = Math.trunc(this.finalFormula);
