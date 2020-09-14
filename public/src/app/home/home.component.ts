@@ -103,6 +103,7 @@ export class HomeComponent implements OnInit {
   currentValue: any;
   downPayment: any;
   income: any;
+  propTax: number;
   mortgage: any;
   newString: string = "";
   visibleIndex:number = 0;
@@ -171,11 +172,15 @@ export class HomeComponent implements OnInit {
     this.formula = (this.downPayment * this.brackets) + this.calculate;
     console.log("formula", this.formula);
     this.finalFormula = (this.formula / this.brackets);
+
+    this.propTax = (this.finalFormula/30/12) * .3;
+    this.propTax = (this.propTax * 30 * 12);
+    this.finalFormula = (this.finalFormula - this.propTax);
+    console.log("proptx", this.propTax)
+
+    console.log("finalformula", this.finalFormula)
     this.percentage = (this.downPayment / this.finalFormula) * 100;
     console.log("percentage", this.percentage)
-
-
-
     this.fifty = Math.trunc((this.calculate / 2) / this.brackets + this.downPayment);
     this.fiftyCommas = this.fifty.toLocaleString();
     this.thirty = Math.trunc((this.calculate * .3) / this.brackets + this.downPayment);
@@ -189,6 +194,7 @@ export class HomeComponent implements OnInit {
     console.log("30%", this .thirty)
     console.log("30 left", this.thirtyLeft);
     console.log("30 left", this.fiftyLeft);
+
 
     this.finalAnswer = Math.trunc(this.finalFormula);
     this.commas = this.finalAnswer.toLocaleString();
