@@ -193,6 +193,8 @@ export class HomeComponent implements OnInit {
     this.percentage = (this.downPayment / this.finalFormula) * 100;
     console.log("percentage", this.percentage)
 
+    // 100% calculation if you don't have a 20% downpayment //
+
     // 50% of net income calculation - estimated property tax//
     this.fifty = Math.trunc((this.calculate / 2) / this.brackets + this.downPayment);
     this.propTax50 = (this.fifty/30/12) * .3;
@@ -203,6 +205,9 @@ export class HomeComponent implements OnInit {
     console.log("doen payment percent", this.dpPercent5);
     this.fiftyCommas = this.fifty.toLocaleString();
 
+    // 50% calculation if you don't have a 20% downpayment //
+    
+
     // 30% of net income calculation - estimated property tax//
     this.thirty = Math.trunc((this.calculate * .3) / this.brackets + this.downPayment);
     this.propTax30 = (this.thirty/30/12) * .3;
@@ -212,6 +217,8 @@ export class HomeComponent implements OnInit {
     this.dpPercent3 = ( this.downPayment / this.thirty );
     console.log("doen payment percent", this.dpPercent3);
     this.thirtyCommas = this.thirty.toLocaleString();
+
+    // 30% calculation if you don't have a 20% downpayment //
 
     // Calculation of left over amount after mortgage payment for 30% & 50%//
     this.thirtyLeftover = Math.trunc(this.calculate - (this.calculate * .3) - this.propTax30m);
