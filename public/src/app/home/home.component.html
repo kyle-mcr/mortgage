@@ -73,23 +73,32 @@
         <div class="progress" style="width:100%"></div>
         <div class="card-body">
           <h5 class="card-title">${{ commas }}</h5>
-          <p class="card-text">This is what you could afford if you were to spend 100% of your *Net Income on a monthly mortgage payment. 
+          <p class="card-text">This is what you could afford if you were to spend 100% of your *Net Income on a monthly house payment. 
             This would leave you with <span style="color:red; font-weight: bold; font-size:1.3vw;">$0</span> leftover.
           </p>
-          <p> <i class="fas fa-exclamation-circle"></i>This is including an estimated
-            Property Tax and Home insurance based on home value. </p>
+          <hr>
+          <i class="far fa-star"></i> Your downpayment percentage for this house is {{ dpPercent }}%. A downpayment less than 20% will require you to pay PMI(private mortgage insurance) that will cost you <i id="dollar" class="fas fa-dollar-sign"></i>{{ pmiMonthly }} per month.
+          Consider saving up more money to reduce your monthly payment or go for a cheaper house for now!
+            <hr>
+            <p> <i class="fas fa-exclamation-circle"></i>This is including an estimated
+              Property Tax and Home insurance based on home value. </p>
         </div>
+      
       </div>
 
       <div class="card border-light mb-3" id="endCards">
         <div class="progress" style="width:50%"></div>
         <div class="card-body">
           <h5 class="card-title">${{ fiftyCommas }}</h5>
-          <p class="card-text">This is what you could afford if you were to spend 50% of your *Net Income on a monthly mortgage payment. 
+          <p class="card-text">This is what you could afford if you were to spend 50% of your *Net Income on a monthly house payment. 
             This would leave you with <span style="color:#d9ff00; font-weight: bold; font-size:1.3vw;">${{ fiftyLeft }}</span> leftover.
           </p>
-          <p> <i class="fas fa-exclamation-circle"></i>This is including an estimated
-            Property Tax and Home insurance based on home value. </p>
+          <hr>
+          <i class="far fa-star"></i> Your downpayment percentage for this house is {{ dpPercent5 }}%.  A downpayment less than 20% will require you to pay PMI(private mortgage insurance) that will cost you <i id="dollar" class="fas fa-dollar-sign"></i>{{ pmiMonthly5 }} per month.
+          Consider saving up more money to reduce your monthly payment or go for a cheaper house for now!
+            <hr>
+            <p> <i class="fas fa-exclamation-circle"></i>This is including an estimated
+              Property Tax and Home insurance based on home value. </p>
         </div>
       </div>
 
@@ -97,12 +106,16 @@
         <div class="progress" style="width:30%"></div>
         <div class="card-body">
           <h5 class="card-title">${{ thirtyCommas }}</h5>
-          <p class="card-text">This is what you could afford if you were to spend 30% of your *Net Income on a monthly mortgage payment. 
+          <p class="card-text">This is what you could afford if you were to spend 30% of your *Net Income on a monthly house payment. 
             This would leave you with <span style="color:green; font-weight: bold; font-size:1.3vw;">${{ thirtyLeft }}</span>  leftover.
              
           </p>
-          <p> <i class="fas fa-exclamation-circle"></i>This is including an estimated
-            Property Tax and Home insurance based on home value. </p>
+          <hr>
+          <i class="far fa-star"></i> Your downpayment percentage for this house is {{ dpPercent3 }}%.  A downpayment less than 20% will require you to pay PMI(private mortgage insurance) that will cost you <i id="dollar" class="fas fa-dollar-sign"></i>{{ pmiMonthly3 }} per month.
+          Consider saving up more money to reduce your monthly payment or go for a cheaper house for now!
+            <hr>
+            <p> <i class="fas fa-exclamation-circle"></i>This is including an estimated
+              Property Tax and Home insurance based on home value. </p>
         </div>
       </div>
     </div>

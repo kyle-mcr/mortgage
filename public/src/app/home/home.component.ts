@@ -114,6 +114,15 @@ export class HomeComponent implements OnInit {
   dpPercent3: number;
   newString: string = "";
   visibleIndex:number = 0;
+  minusDp:number;
+  dpPercentage: number;
+  pmi: number;
+  pmi3: number;
+  pmi5: number;
+  pmiMonthly: number;
+  pmiMonthly5: number;
+  pmiMonthly3: number;
+
 
 
   constructor() {}
@@ -181,44 +190,69 @@ export class HomeComponent implements OnInit {
     this.formula = (this.downPayment * this.brackets) + this.calculate;
     console.log("formula", this.formula);
     this.finalFormula = (this.formula / this.brackets);
+    console.log("finalformula,", this.finalFormula);
+
 
     // 100% of net income calculation - estimated property tax//
-    this.propTax = (this.finalFormula/30/12) * .3;
+    this.propTax = (this.finalFormula/30/12) * .22;
     this.propTax = (this.propTax * 30 * 12);
+    this.pmi = (this.finalFormula * .08);
+    this.pmiMonthly = Math.trunc(this.pmi / 30 / 12);
+    console.log("PMI", this.pmi);
     this.finalFormula = (this.finalFormula - this.propTax);
-    this.dpPercent = ( this.downPayment / this.finalFormula);
-    console.log("doen payment percent", this.dpPercent);
+     this.dpPercent = Math.trunc((this.downPayment / this.finalFormula) * 100);
+    console.log("down payment percentage", this.dpPercent)
+    console.log("final formula", this.finalFormula)
+    console.log("100", this.finalFormula)
+    if(this.dpPercent< 20){
+      this.finalFormula = (this.finalFormula - this.pmi);
+    }
+    console.log("down payment percent", this.dpPercent);
     console.log("proptx", this.propTax)
-    console.log("finalformula", this.finalFormula)
-    this.percentage = (this.downPayment / this.finalFormula) * 100;
-    console.log("percentage", this.percentage)
+    console.log("100", this.finalFormula)
 
-    // 100% calculation if you don't have a 20% downpayment //
 
     // 50% of net income calculation - estimated property tax//
     this.fifty = Math.trunc((this.calculate / 2) / this.brackets + this.downPayment);
-    this.propTax50 = (this.fifty/30/12) * .3;
+    this.propTax50 = (this.fifty/30/12) * .22;
     this.propTax50m = this.propTax50;
     this.propTax50 = (this.propTax50 * 30 * 12);
+    this.pmi5 = (this.fifty * .08);
+    this.pmiMonthly5 = Math.trunc(this.pmi5 / 30 / 12);
+    console.log("proptax50", this.propTax50);
+    console.log("PMI50", this.pmi5);
+    console.log("50 down payment and fifty ", this.downPayment, this.fifty)
     this.fifty = (this.fifty - this.propTax50);
-    this.dpPercent5 = ( this.downPayment / this.fifty );
-    console.log("doen payment percent", this.dpPercent5);
+    this.dpPercent5 = Math.trunc(( this.downPayment / this.fifty) * 100);
+    console.log("doen payment percent 50%", this.dpPercent5);
+    console.log("fifty", this.fifty)
+    if(this.dpPercent5< 20){
+      this.fifty = (this.fifty - this.pmi);
+    }
+    console.log("fifty", this.fifty)
     this.fiftyCommas = this.fifty.toLocaleString();
 
-    // 50% calculation if you don't have a 20% downpayment //
-    
 
     // 30% of net income calculation - estimated property tax//
     this.thirty = Math.trunc((this.calculate * .3) / this.brackets + this.downPayment);
-    this.propTax30 = (this.thirty/30/12) * .3;
+    this.propTax30 = (this.thirty/30/12) * .22;
     this.propTax30m = this.propTax30;
     this.propTax30 = (this.propTax30 * 30 * 12);
+    this.pmi3 = (this.thirty * .08);
+    this.pmiMonthly3 = Math.trunc(this.pmi3 / 30 / 12);
+    console.log("proptax30", this.propTax30);
+    console.log("PMI30", this.pmi3);
+    console.log("30 down payment and thirty ", this.downPayment, this.thirty)
     this.thirty = (this.thirty - this.propTax30);
-    this.dpPercent3 = ( this.downPayment / this.thirty );
-    console.log("doen payment percent", this.dpPercent3);
+    this.dpPercent3 = Math.trunc(( this.downPayment / this.thirty) * 100);
+    console.log("doen payment percent 30%", this.dpPercent3);
+    console.log("thirty", this.thirty)
+    if(this.dpPercent3< 20){
+      this.thirty = (this.thirty - this.pmi);
+    }
+    console.log("thirty", this.thirty)
     this.thirtyCommas = this.thirty.toLocaleString();
 
-    // 30% calculation if you don't have a 20% downpayment //
 
     // Calculation of left over amount after mortgage payment for 30% & 50%//
     this.thirtyLeftover = Math.trunc(this.calculate - (this.calculate * .3) - this.propTax30m);
