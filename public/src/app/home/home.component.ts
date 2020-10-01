@@ -19,20 +19,16 @@ export class HomeComponent implements OnInit {
       description: "Do you have a monthly car insurance payment?",
     },
     {
-      description:
-        "How much do you estimate you spend on gas for your car monthly?",
+      description: "How much do you estimate you spend on gas for your car monthly?",
+    },
+    { 
+      description: "How much do you estimate you spend on car maintenance and repair per month?",
     },
     {
-      description:
-        "How much do you estimate you spend on average, for car maintenance/repair per month?",
+      description: "Do you have any monthly health/dental expenses (i.e. health insurance, medical bills, prescription drugs) ?",
     },
     {
-      description:
-        "Do you have any monthly health/dental expenses(including health insurance, medical bills, prescription drugs) ?",
-    },
-    {
-      description:
-        "How much do you estimate you spend on groceries and essential supplies per month?",
+      description: "How much do you estimate you spend on groceries and essential supplies per month?",
     },
     {
       description: "Do you pay for a monthly fitness membership?",
@@ -44,8 +40,7 @@ export class HomeComponent implements OnInit {
       description: "Do you pay for a monthly phone bill?",
     },
     {
-      description:
-        "How much do you estimate you spend on dining out per month?",
+      description: "How much do you estimate you spend on dining out per month?",
     },
     {
       description: "Estimated monthly cost for reacreation and entertainment?",
@@ -54,22 +49,19 @@ export class HomeComponent implements OnInit {
       description: "Do you pay for child care or child support?",
     },
     {
-      description:
-        "Any other monthly expenses that weren't accounted for please add them here(other than rent, electricity, and internet/cable).",
+      description: "Any other monthly expenses that weren't accounted for please add them here(other than rent, electricity, and internet/cable).",
     },
     {
       description: "What is your total household monthly income after taxes?",
     },
     {
-      description:
-        "Do you recieve any other monthly benefits(social security benefits, disability income, etc) ?",
+      description: "Do you recieve any other monthly benefits(social security benefits, disability income, etc) ?",
     },
     {
       description: "Do you have any other sources of perpetual monthly income?",
     },
     {
-      description:
-        "How much money do you have saved that you can put towards a downpayment on a house?",
+      description: "How much money do you have saved that you can put towards a downpayment on a house?",
     },
   ];
   numbersInForm: any = {};
@@ -230,6 +222,7 @@ export class HomeComponent implements OnInit {
       this.fifty = (this.fifty - this.pmi);
     }
     console.log("fifty", this.fifty)
+    this.fiftyCommas = Math.trunc(this.fiftyCommas)
     this.fiftyCommas = this.fifty.toLocaleString();
 
 
@@ -251,6 +244,7 @@ export class HomeComponent implements OnInit {
       this.thirty = (this.thirty - this.pmi);
     }
     console.log("thirty", this.thirty)
+    this.thirtyCommas = Math.trunc(this.thirtyCommas);
     this.thirtyCommas = this.thirty.toLocaleString();
 
 
