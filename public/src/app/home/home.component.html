@@ -52,10 +52,10 @@
           <label id="inputField"><i id="dollar" class="fas fa-dollar-sign"></i><i id="dollar"
               class="fas fa-dollar-sign"></i><i id="dollar" class="fas fa-dollar-sign"></i><input type="number"
               name="numbersInForm[cards[count].description]" [(ngModel)]="numbersInForm[cards[count].description]" id="input"
-              class="form-input" required placeholder="Ex: $100 or $0 if none" /></label>
+              class="form-input" placeholder="Ex: $100 or $0 if none" /></label>
           <button id="back" type="button" (click)="back()"><i class="fas fa-hand-point-left"></i>
           </button>
-          <button [disabled]="!formcontrol.form.valid" id="bigbutton" type="button" type="submit">
+          <button id="bigbutton" type="button" type="submit">
             Next
           </button>
           
